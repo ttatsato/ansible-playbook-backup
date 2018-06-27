@@ -1,0 +1,6 @@
+- hosts:
+    - staging-search-api
+    - staging-collector-api
+  roles:
+    - initialize_ec2
+    - docker

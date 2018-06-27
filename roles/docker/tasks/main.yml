@@ -1,0 +1,28 @@
+- name: install docker
+  become: yes
+  yum: 
+    name: docker
+
+- name: start service docker
+  become: yes
+  service:
+    name: docker
+    state: started
+
+- name: add ec2-user to docker group
+  become: yes
+  user:
+    name: ec2-user
+    group: docker
+
+- name: check docker-compose exists
+  stat:
+    path: /usr/local/bin/docker-compose
+  register: docker_compose_bin 
+
+- name: install compose
+  become: yes
+  shell: |
+    sudo curl -L https://github.com/docker/compose/releases/download/1.19.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
+    sudo chmod +x /usr/local/bin/docker-compose
+  when: docker_compose_bin.stat.exists == False

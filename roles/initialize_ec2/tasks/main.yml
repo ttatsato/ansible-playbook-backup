@@ -1,0 +1,13 @@
+- name: install base yum packages
+  become: yes
+  yum:
+    name: "{{ item }}"
+  with_items:
+    - git
+    - curl
+    - tmux
+    - vim
+    - mysql
+    - gcc
+    - jq
+    - mlocate

@@ -1,0 +1,30 @@
+- name: install base yum packages
+  become: yes
+  yum:
+    name: "{{ item }}"
+  with_items:
+    - git
+    - curl
+    - tmux
+    - vim
+    - mysql
+    - mysql-devel 
+    - jq
+    - mlocate
+    - gcc
+    - gcc-c++
+    - make
+    - openssl-devel
+    - bzip2-devel
+    - zlib-devel
+    - readline-devel
+    - sqlite-devel
+
+- name: install pyenv
+  git: repo=https://github.com/yyuu/pyenv.git dest=~/.pyenv version=master
+
+- name: copy bashrc
+  copy: src=bashrc.sh dest=~/.bashrc 
+
+- name: isntall python
+  shell: pyenv install 3.6.2

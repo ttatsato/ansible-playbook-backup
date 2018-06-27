@@ -1,0 +1,9 @@
+[staging-search-api]
+stg-kenken-poc-a
+
+[staging-collector-api]
+stg-kenken-poc-collector
+
+[production-search-api]
+prd-kenken-poc-a
+

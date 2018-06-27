@@ -1,0 +1,4 @@
+- hosts:
+    - staging-ml
+  roles:
+    - python
